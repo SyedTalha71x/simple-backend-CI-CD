@@ -63,7 +63,7 @@ pipeline{
          stage('Deploy') {
             steps {
                 script {
-                    sshagent(['ansible-ssh-credentials']) {
+                    sshagent(['ansible-jenkins-ssh']) {
                         sh 'ansible-playbook -i inventory deploy.yml --extra-vars "image_tag=${BUILD_NUMBER}"'
                     }
                 }
