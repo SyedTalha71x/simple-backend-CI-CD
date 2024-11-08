@@ -16,8 +16,16 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install --prefix frontend'
-                sh 'npm install --prefix backend'
+                   sh '''
+            # Source nvm and use the correct node version
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+            nvm use 22.11.0  # Make sure the correct version is used
+            
+            # Install dependencies for frontend and backend
+            npm install --prefix frontend
+            npm install --prefix backend
+            '''
             }
         }
 
