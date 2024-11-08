@@ -16,8 +16,8 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'PATH=$PATH:/usr/local/bin npm install --prefix frontend'
-                sh 'PATH=$PATH:/usr/local/bin npm install --prefix backend'
+                sh 'npm install --prefix frontend'
+                sh 'npm install --prefix backend'
             }
         }
 
