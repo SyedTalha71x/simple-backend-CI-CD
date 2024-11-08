@@ -71,7 +71,7 @@ pipeline {
                 script {
                     sshagent(['ansible-jenkins-ssh']) {
                         sh '''
-                            ansible-playbook -i inventory deploy.yml --extra-vars "image_tag=${BUILD_NUMBER}"
+                           ansible-playbook -i inventory.yaml deploy.yml --extra-vars "image_tag=${BUILD_NUMBER}" --ssh-extra-args='-o StrictHostKeyChecking=no'
                         '''
                     }
                 }
